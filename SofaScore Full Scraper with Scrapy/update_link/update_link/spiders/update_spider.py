@@ -1,3 +1,4 @@
+from getpass import getpass
 import scrapy
 from datetime import datetime
 import mysql.connector
@@ -5,7 +6,7 @@ from ..items import UpdateLinkItem
 
 
 def getLinksFromTeamLinks():
-    conn = mysql.connector.connect(host="localhost", user="root", password="kian1381", database="teams_links")
+    conn = mysql.connector.connect(host="localhost", user="root", password=getpass('MySQL password: '), database="teams_links")
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM teams_link')
     listt = cursor.fetchall()

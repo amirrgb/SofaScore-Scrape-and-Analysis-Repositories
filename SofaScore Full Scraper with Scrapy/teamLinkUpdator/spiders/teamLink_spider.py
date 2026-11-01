@@ -1,3 +1,4 @@
+from getpass import getpass
 import scrapy
 import mysql.connector
 from datetime import datetime
@@ -9,7 +10,7 @@ class TeamlinkSpiderSpider(scrapy.Spider):
     name = 'teamLink_spider'
 
     def getLinksFromTeamLinks(self):
-        conn = mysql.connector.connect(host="localhost",user="root",password="kian1381",database="teams_links")
+        conn = mysql.connector.connect(host="localhost",user="root",password=getpass('MySQL password: '),database="teams_links")
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM teams_link')
         links=["https://www.sofascore.com/team/football/iskenderunspor-as/170408"]

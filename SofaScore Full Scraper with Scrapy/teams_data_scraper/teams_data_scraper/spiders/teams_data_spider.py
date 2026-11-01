@@ -1,3 +1,4 @@
+from getpass import getpass
 import scrapy
 import mysql.connector
 from ..items import TeamsDataScraperItem
@@ -6,7 +7,7 @@ from datetime import datetime
 
 # complete this
 def getApiLinksFromTeamLinks():
-    conn = mysql.connector.connect(host="localhost", user="root", password="kian1381", database="updated_teams_links")
+    conn = mysql.connector.connect(host="localhost", user="root", password=getpass('MySQL password: '), database="updated_teams_links")
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM teams_link')
     links = cursor.fetchall()
