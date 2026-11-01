@@ -5,12 +5,13 @@
 
 
 # useful for handling different item types with a single interface
+from getpass import getpass
 from itemadapter import ItemAdapter
 import mysql.connector
 
 
 def insertToNewDB(link):
-    conn = mysql.connector.connect(host="localhost", user="root", password="kian1381")
+    conn = mysql.connector.connect(host="localhost", user="root", password=getpass('MySQL password: '))
     cursor = conn.cursor()
     existSql = 'SELECT * FROM updated_teams_links.teams_link WHERE TeamLink = "%s"'%link
     cursor.execute(existSql)

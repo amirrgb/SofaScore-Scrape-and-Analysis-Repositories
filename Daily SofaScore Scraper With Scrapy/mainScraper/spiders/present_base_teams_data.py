@@ -1,3 +1,4 @@
+from getpass import getpass
 import scrapy
 import mysql.connector
 from mainScraper.mainScraper.items import MainscraperItem
@@ -8,7 +9,7 @@ class PresentBaseTeamsDataSpider(scrapy.Spider):
     name = "present_base_teams_data"
 
     def getApiLinksFromTeamLinks(self):
-        conn = mysql.connector.connect(host="localhost", user="root", password="kian1381",database="updated_teams_links")
+        conn = mysql.connector.connect(host="localhost", user="root", password=getpass('MySQL password: '),database="updated_teams_links")
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM teams_link')
         links = cursor.fetchall()

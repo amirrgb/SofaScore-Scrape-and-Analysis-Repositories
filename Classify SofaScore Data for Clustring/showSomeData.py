@@ -1,3 +1,4 @@
+from getpass import getpass
 import numpy as np
 import matplotlib.pyplot as plt
 import time
@@ -28,7 +29,7 @@ def convertDateToTimestamp(date:str):
     return int(time.mktime(datetime.strptime(date, '%Y-%m-%d').timetuple()))
 
 def readAllMainObjects():
-    cnx = mysql.connector.connect(user='root', password='kian1381',host='localhost',database='teams_datas')
+    cnx = mysql.connector.connect(user='root', password=getpass('MySQL password: '),host='localhost',database='teams_datas')
     cursor = cnx.cursor()
     query = ("SELECT * FROM main_database.references;")
     cursor.execute(query)
